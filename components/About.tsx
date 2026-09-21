@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { currentlyLearning } from "@/data/skills";
 
 export default function About() {
@@ -48,12 +49,16 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="flex justify-center"
           >
-            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-xl bg-gradient-to-br from-sky-500/80 to-cyan-400/40 p-px overflow-hidden">
-              <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <div className="text-6xl mb-4">👨‍💻</div>
-                  <p>Profile Image</p>
-                </div>
+            <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-xl bg-gradient-to-br from-sky-500/80 to-cyan-400/40 p-px overflow-hidden">
+              <div className="relative w-full h-full rounded-xl bg-slate-950 overflow-hidden">
+                <Image
+                  src="/profile.jpg"
+                  alt="Rence wearing graduation attire"
+                  fill
+                  sizes="(max-width: 640px) 256px, 288px"
+                  className="object-cover object-top"
+                  priority
+                />
               </div>
             </div>
           </motion.div>
