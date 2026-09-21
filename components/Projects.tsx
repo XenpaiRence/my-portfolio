@@ -22,16 +22,16 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="min-h-screen py-24 sm:py-28 lg:py-32 bg-black">
-        <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
+      <section id="projects" className="section-shell bg-[#080d15]">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="mb-12 lg:mb-16"
+            className="section-heading"
           >
-            <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="section-title font-bold text-white mb-4">
               Featured Projects
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full"></div>
@@ -64,7 +64,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 text-center"
+            className="mt-12 text-center"
           >
             <p className="text-gray-400 text-lg mb-6">
               Interested in seeing more projects?

@@ -31,17 +31,17 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="min-h-screen py-24 sm:py-28 lg:py-32 bg-gray-950">
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
+    <section id="experience" className="section-shell bg-[#0b121c]">
+      <div className="site-container">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-12 lg:mb-16"
+          className="section-heading"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="section-title font-bold text-white mb-4">
             Experience & Education
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full"></div>
@@ -75,13 +75,13 @@ export default function Experience() {
                   <motion.div
                     key={exp.id}
                     variants={itemVariants}
-                    className="relative pl-8 pb-6 border-l-2 border-blue-600"
+                    className="relative ml-4 pb-6 border-l-2 border-blue-600"
                   >
                     {/* Timeline dot */}
-                    <div className="absolute left-[-12px] top-0 w-6 h-6 rounded-full bg-blue-600 border-4 border-gray-950" />
+                    <div className="absolute left-[-13px] top-0 z-10 w-6 h-6 rounded-full bg-blue-600 border-4 border-gray-950" />
 
                     {/* Content */}
-                    <div className="p-4 rounded-lg border border-gray-800 hover:border-gray-700 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/10">
+                    <div className="relative ml-5 p-4 rounded-lg border border-gray-800 hover:border-gray-700 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/10">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <h4 className="text-lg font-semibold text-white">

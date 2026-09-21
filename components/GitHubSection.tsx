@@ -5,8 +5,8 @@ import { ExternalLink, Code, GitFork } from "lucide-react";
 
 export default function GitHubSection() {
   return (
-    <section id="github-section" className="min-h-screen py-24 sm:py-28 lg:py-32 bg-gray-950">
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
+    <section id="github-section" className="section-shell bg-[#080d15]">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

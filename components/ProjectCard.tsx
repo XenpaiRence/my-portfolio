@@ -29,9 +29,9 @@ export default function ProjectCard({
       variants={itemVariants}
       className="group relative h-full"
     >
-      <div className="h-full rounded-lg overflow-hidden border border-gray-800 hover:border-gray-700 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/10 flex flex-col">
+      <div className="h-full rounded-xl overflow-hidden border border-gray-800 hover:border-sky-400/40 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-600/10 flex flex-col">
         {/* Image Section */}
-        <div className="relative h-48 sm:h-56 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 overflow-hidden">
+        <div className="relative h-44 sm:h-52 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 overflow-hidden">
           <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
             <div className="text-center">
               <div className="text-4xl mb-2">🖼️</div>
@@ -42,14 +42,14 @@ export default function ProjectCard({
         </div>
 
         {/* Content Section */}
-        <div className="flex-1 p-6 flex flex-col">
+        <div className="flex-1 p-5 sm:p-6 flex flex-col">
           {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-3 line-clamp-2 leading-snug">
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-400 text-sm mb-4 line-clamp-3 flex-1">
+          <p className="text-gray-400 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
             {project.description}
           </p>
 

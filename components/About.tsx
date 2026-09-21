@@ -24,16 +24,16 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="min-h-screen py-24 sm:py-28 lg:py-32 bg-black">
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
+    <section id="about" className="section-shell bg-[#080d15]">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-12 lg:mb-16"
+            className="section-heading"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="section-title font-bold text-white mb-4">
             About Me
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full"></div>
@@ -48,8 +48,8 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="flex justify-center"
           >
-            <div className="w-72 h-72 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-600 p-1 overflow-hidden">
-              <div className="w-full h-full rounded-lg bg-gray-900 flex items-center justify-center">
+            <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-xl bg-gradient-to-br from-sky-500/80 to-cyan-400/40 p-px overflow-hidden">
+              <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
                 <div className="text-center text-gray-400">
                   <div className="text-6xl mb-4">👨‍💻</div>
                   <p>Profile Image</p>

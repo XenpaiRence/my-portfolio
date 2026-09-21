@@ -25,31 +25,34 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-20 sm:pt-24 sm:pb-24 lg:pt-28 lg:pb-28 bg-gradient-to-b from-black to-gray-900">
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center lg:pl-4">
+    <section id="home" className="relative flex items-center overflow-hidden border-b border-slate-800/60 pt-24 pb-16 sm:pt-28 sm:pb-20 lg:min-h-[calc(100vh-4.5rem)]">
+      <div className="site-container">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8"
+            className="space-y-6"
           >
             <motion.div variants={itemVariants}>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-                Hi, I&apos;m <span className="bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Rence</span>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-sky-400">
+                Hello, I&apos;m
+              </p>
+              <h1 className="text-[clamp(3rem,7vw,5.5rem)] font-bold text-white leading-[0.98] tracking-[-0.055em]">
+                Rence<span className="text-sky-400">.</span>
               </h1>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <h2 className="text-xl sm:text-2xl text-gray-300 font-semibold">
+              <h2 className="text-xl sm:text-2xl text-slate-200 font-semibold tracking-tight">
                 BSIT Graduate & Aspiring Web Developer
               </h2>
             </motion.div>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-400 leading-relaxed max-w-lg"
+              className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl"
             >
               I build functional and user-friendly web applications using modern web technologies, with a focus on clean interfaces, practical solutions, and continuous learning.
             </motion.p>
@@ -57,13 +60,13 @@ export default function Hero() {
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
-              className="flex gap-4"
+              className="flex gap-3"
             >
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-lg border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-900"
+                className="p-3 rounded-md border border-slate-700/80 hover:border-sky-400/60 text-slate-400 hover:text-white transition-all duration-200 hover:bg-sky-400/5"
                 aria-label="GitHub"
               >
                 <Code size={24} />
@@ -89,18 +92,18 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 pt-3"
             >
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-sky-500 text-slate-950 font-semibold hover:bg-sky-300 transition-colors duration-200"
               >
                 View My Projects
                 <ArrowRight size={20} />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-600 text-white font-semibold hover:border-gray-400 hover:bg-gray-900 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-slate-600 text-white font-semibold hover:border-sky-400/70 hover:bg-white/[0.04] transition-colors duration-200"
               >
                 Contact Me
               </a>
@@ -112,17 +115,17 @@ export default function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="hidden lg:flex items-center justify-center"
+            className="flex items-center justify-center"
           >
-            <div className="relative w-full max-w-sm">
+            <div className="relative w-full max-w-md">
               {/* Code window style element */}
-              <div className="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden shadow-2xl">
-                <div className="bg-gray-800 border-b border-gray-700 px-4 py-3 flex items-center gap-2">
+              <div className="bg-[#0c1420]/95 rounded-xl border border-slate-700/80 overflow-hidden shadow-2xl shadow-sky-950/30">
+                <div className="bg-slate-900/90 border-b border-slate-700/80 px-4 py-3 flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div className="p-6 space-y-4 font-mono text-sm">
+                <div className="p-5 sm:p-7 space-y-4 font-mono text-sm leading-relaxed">
                   <div className="text-blue-400">
                     <span className="text-cyan-400">const</span> <span className="text-yellow-300">developer</span> = {"{"}
                   </div>

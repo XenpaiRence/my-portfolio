@@ -38,17 +38,17 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="min-h-screen py-24 sm:py-28 lg:py-32 bg-gray-950">
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16">
+    <section id="skills" className="section-shell bg-[#0b121c]">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-12 lg:mb-16"
+          className="section-heading"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-white mb-4">
-            Skills & Expertise
+          <h2 className="section-title font-bold text-white mb-4">
+            Skills &amp; Expertise
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full"></div>
         </motion.div>
@@ -58,7 +58,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 items-stretch"
         >
           {skills.map((category) => {
             const IconComponent = iconMap[category.icon || "Code2"];
@@ -67,7 +67,7 @@ export default function Skills() {
               <motion.div
                 key={category.category}
                 variants={itemVariants}
-                className="group relative bg-gradient-to-br from-gray-900 to-black rounded-lg border border-gray-800 hover:border-gray-700 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/10"
+                className="group relative h-full bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 hover:border-sky-400/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-600/10"
               >
                 {/* Decorative gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-600/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -107,7 +107,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mt-12 p-6 rounded-lg border border-gray-800 bg-gradient-to-r from-blue-600/10 to-cyan-600/10"
+          className="mt-10 p-5 sm:p-6 rounded-xl border border-blue-600/20 bg-gradient-to-r from-blue-600/10 to-cyan-600/10"
         >
           <p className="text-gray-300 text-center">
             I focus on building practical skills and staying updated with modern technologies. My expertise is continuously evolving through real-world projects and continuous learning.
