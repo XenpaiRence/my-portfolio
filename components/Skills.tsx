@@ -9,12 +9,53 @@ import {
   Wrench,
   type LucideIcon,
 } from "lucide-react";
+import type { IconType } from "react-icons";
+import {
+  SiBootstrap,
+  SiCakephp,
+  SiCplusplus,
+  SiCss,
+  SiFlutter,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiLaravel,
+  SiMysql,
+  SiNextdotjs,
+  SiPhp,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import { FiCpu, FiShare2 } from "react-icons/fi";
 
 const iconMap: Record<string, LucideIcon> = {
   Code2,
   Server,
   Smartphone,
   Wrench,
+};
+
+const skillIconMap: Record<string, IconType> = {
+  HTML: SiHtml5,
+  CSS: SiCss,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  Bootstrap: SiBootstrap,
+  "Tailwind CSS": SiTailwindcss,
+  PHP: SiPhp,
+  Laravel: SiLaravel,
+  CakePHP: SiCakephp,
+  "REST API": FiShare2,
+  MySQL: SiMysql,
+  Flutter: SiFlutter,
+  Git: SiGit,
+  GitHub: SiGithub,
+  "C++": SiCplusplus,
+  IoT: FiCpu,
 };
 
 export default function Skills() {
@@ -85,15 +126,23 @@ export default function Skills() {
 
                   {/* Skills List */}
                   <div className="space-y-2">
-                    {category.skills.map((skill) => (
-                      <div
-                        key={skill}
-                        className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 flex items-center"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 mr-2" />
-                        {skill}
-                      </div>
-                    ))}
+                    {category.skills.map((skill) => {
+                      const SkillIcon = skillIconMap[skill];
+
+                      return (
+                        <div
+                          key={skill}
+                          className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 flex items-center gap-2"
+                        >
+                          {SkillIcon ? (
+                            <SkillIcon size={16} className="shrink-0 text-sky-400" aria-hidden="true" />
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600" />
+                          )}
+                          {skill}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>
