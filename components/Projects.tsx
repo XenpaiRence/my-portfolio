@@ -58,24 +58,6 @@ export default function Projects() {
             ))}
           </motion.div>
 
-          {/* View All Projects CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-12 text-center"
-          >
-            <p className="text-gray-400 text-lg mb-6">
-              Interested in seeing more projects?
-            </p>
-            <a
-              href="#github-section"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-gray-600 text-white font-semibold hover:border-gray-400 hover:bg-gray-900 transition-all duration-300"
-            >
-              View All on GitHub
-            </a>
-          </motion.div>
         </div>
       </section>
 
