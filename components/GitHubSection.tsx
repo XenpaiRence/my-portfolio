@@ -65,7 +65,7 @@ export default function GitHubSection() {
             {/* CTA Button */}
             <div className="mt-8">
               <a
-                href="https://github.com"
+                href="https://github.com/XenpaiRence"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105"

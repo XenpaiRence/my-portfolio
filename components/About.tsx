@@ -73,10 +73,10 @@ export default function About() {
           >
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-white mb-3">
-                BSIT Graduate & Developer
+                Full Stack Web Developer
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                I&apos;m a recent Bachelor of Science in Information Technology graduate with a passion for web development. My journey in technology has equipped me with a solid foundation in computer science principles and practical development experience.
+                I build web applications across the frontend and backend, bringing interfaces, application logic, and data together to solve practical problems. My Information Technology background gives me a foundation in databases, software engineering, and modern web development.
               </p>
             </motion.div>
 
@@ -85,7 +85,7 @@ export default function About() {
                 My Focus
               </h4>
               <p className="text-gray-400 leading-relaxed">
-                I&apos;m particularly interested in full-stack web development and backend systems. I love building scalable applications that solve real problems, with a strong emphasis on code quality, user experience, and continuous learning.
+                My focus is building scalable full-stack applications with clean code, thoughtful user experiences, and reliable backend systems.
               </p>
             </motion.div>
 

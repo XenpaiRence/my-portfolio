@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Code, Share2, Send } from "lucide-react";
+import { Mail, Code, Share2, Phone, Send } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,7 +11,10 @@ export default function Contact() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [submissionError, setSubmissionError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,18 +24,53 @@ export default function Contact() {
       ...prev,
       [name]: value,
     }));
+    setSubmissionStatus("idle");
+    setSubmissionError("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // For now, just show success message
-    // In production, integrate with email service like EmailJS or Formspree
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
+    setSubmissionStatus("sending");
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/rencelacanilao23@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            _replyto: formData.email,
+            _subject: `Portfolio message from ${formData.name}`,
+            message: formData.message,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      if (!response.ok || result.success !== "true" && result.success !== true) {
+        setSubmissionError(
+          typeof result.message === "string"
+            ? result.message
+            : "The email service did not accept the message."
+        );
+        setSubmissionStatus("error");
+        return;
+      }
+
       setFormData({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+      setSubmissionError("");
+      setSubmissionStatus("success");
+    } catch {
+      setSubmissionError(
+        "The email service could not be reached. Check your connection and try again."
+      );
+      setSubmissionStatus("error");
+    }
   };
 
   const containerVariants = {
@@ -97,15 +135,33 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-semibold text-white">Email</h3>
                   <p className="text-sm text-gray-400">
-                    your.email@example.com
+                    rencelacanilao23@gmail.com
                   </p>
                 </div>
               </div>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:rencelacanilao23@gmail.com"
                 className="text-blue-400 hover:text-blue-300 font-medium text-sm"
               >
                 Send me an email →
+              </a>
+            </div>
+
+            <div className="p-6 rounded-lg border border-gray-800 hover:border-gray-700 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/10">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-3 rounded-lg bg-blue-600/20 text-blue-400">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Phone</h3>
+                  <p className="text-sm text-gray-400">09752493649</p>
+                </div>
+              </div>
+              <a
+                href="tel:09752493649"
+                className="text-blue-400 hover:text-blue-300 font-medium text-sm"
+              >
+                Call me
               </a>
             </div>
 
@@ -115,7 +171,7 @@ export default function Contact() {
               </h3>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/XenpaiRence"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
@@ -124,16 +180,16 @@ export default function Contact() {
                   <Code size={24} />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.facebook.com/donlorico.lacanilao.7?share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EomVYWfAN#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
-                  aria-label="LinkedIn"
+                  aria-label="Facebook"
                 >
                   <Share2 size={24} />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:rencelacanilao23@gmail.com"
                   className="p-3 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
                   aria-label="Email"
                 >
@@ -184,7 +240,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-900 text-white placeholder-gray-500 focus:border-blue-600 focus:outline-none transition-colors duration-300"
-                placeholder="your.email@example.com"
+                placeholder="rencelacanilao23@gmail.com"
               />
             </div>
 
@@ -208,17 +264,21 @@ export default function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={submitted}
+              disabled={submissionStatus === "sending" || submissionStatus === "success"}
               className={`w-full px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 ${
-                submitted
+                submissionStatus === "success"
                   ? "bg-green-600 hover:bg-green-700"
+                  : submissionStatus === "sending"
+                    ? "bg-slate-600"
                   : "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
               }`}
             >
-              {submitted ? (
+              {submissionStatus === "success" ? (
                 <>
                   ✓ Message Sent!
                 </>
+              ) : submissionStatus === "sending" ? (
+                "Sending..."
               ) : (
                 <>
                   <Send size={18} />
@@ -227,10 +287,19 @@ export default function Contact() {
               )}
             </motion.button>
 
+            {submissionStatus === "success" && (
+              <p role="status" className="text-sm text-green-400 text-center">
+                Your message was sent successfully.
+              </p>
+            )}
+            {submissionStatus === "error" && (
+              <p role="alert" className="text-sm text-red-400 text-center">
+                {submissionError || "We couldn&apos;t send your message. Please try again or email me directly."}
+              </p>
+            )}
             <p className="text-xs text-gray-500 text-center">
-              This is a frontend form. Please note that email integration needs to
-              be configured with a service like EmailJS or Formspree to actually
-              send emails.
+              Messages are delivered to my email through FormSubmit. First-time
+              setup may require email confirmation.
             </p>
           </motion.form>
         </motion.div>

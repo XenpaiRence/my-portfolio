@@ -12,7 +12,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Backend",
-    skills: ["PHP", "CakePHP", "REST API", "MySQL"],
+    skills: ["PHP", "Laravel", "CakePHP", "REST API", "MySQL"],
     icon: "Server",
   },
   {

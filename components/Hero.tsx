@@ -46,7 +46,7 @@ export default function Hero() {
 
             <motion.div variants={itemVariants}>
               <h2 className="text-xl sm:text-2xl text-slate-200 font-semibold tracking-tight">
-                BSIT Graduate & Aspiring Web Developer
+                Full Stack Web Developer
               </h2>
             </motion.div>
 
@@ -54,7 +54,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-xl"
             >
-              I build functional and user-friendly web applications using modern web technologies, with a focus on clean interfaces, practical solutions, and continuous learning.
+              I build complete web applications across the frontend and backend, focusing on clear user experiences, reliable functionality, and practical solutions.
             </motion.p>
 
             {/* Social Links */}
@@ -63,7 +63,7 @@ export default function Hero() {
               className="flex gap-3"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/XenpaiRence"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-md border border-slate-700/80 hover:border-sky-400/60 text-slate-400 hover:text-white transition-all duration-200 hover:bg-sky-400/5"
@@ -72,16 +72,16 @@ export default function Hero() {
                 <Code size={24} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.facebook.com/donlorico.lacanilao.7?share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EomVYWfAN#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-900"
-                aria-label="LinkedIn"
+                aria-label="Facebook"
               >
                 <Share2 size={24} />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:rencelacanilao23@gmail.com"
                 className="p-3 rounded-lg border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-900"
                 aria-label="Email"
               >

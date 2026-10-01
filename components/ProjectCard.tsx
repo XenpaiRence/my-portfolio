@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Code, ExternalLink } from "lucide-react";
 import { Project } from "@/data/projects";
 
@@ -32,12 +33,22 @@ export default function ProjectCard({
       <div className="h-full rounded-xl overflow-hidden border border-gray-800 hover:border-sky-400/40 bg-gradient-to-br from-gray-900 to-black transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-600/10 flex flex-col">
         {/* Image Section */}
         <div className="relative h-44 sm:h-52 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 overflow-hidden">
-          <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
-            <div className="text-center">
-              <div className="text-4xl mb-2">🖼️</div>
-              <p>{project.title}</p>
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} project screenshot`}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">
+              <div className="text-center">
+                <div className="text-4xl mb-2">🖼️</div>
+                <p>{project.title}</p>
+              </div>
             </div>
-          </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
         </div>
 
@@ -47,6 +58,9 @@ export default function ProjectCard({
           <h3 className="text-lg sm:text-xl font-bold text-white mb-3 line-clamp-2 leading-snug">
             {project.title}
           </h3>
+          {project.subtitle && (
+            <p className="text-sm text-sky-300 -mt-1 mb-3">{project.subtitle}</p>
+          )}
 
           {/* Description */}
           <p className="text-gray-400 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
@@ -59,18 +73,24 @@ export default function ProjectCard({
               Technologies
             </p>
             <div className="flex flex-wrap gap-2">
-              {project.technologies.slice(0, 4).map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 rounded text-xs bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-200"
-                >
-                  {tech}
-                </span>
-              ))}
-              {project.technologies.length > 4 && (
-                <span className="px-2 py-1 rounded text-xs text-gray-400">
-                  +{project.technologies.length - 4}
-                </span>
+              {project.technologies.length > 0 ? (
+                <>
+                  {project.technologies.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 rounded text-xs bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 && (
+                    <span className="px-2 py-1 rounded text-xs text-gray-400">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
+                </>
+              ) : (
+                <span className="text-xs text-gray-500">Stack not specified</span>
               )}
             </div>
           </div>

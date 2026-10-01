@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-2">Rence</h3>
             <p className="text-gray-400 text-sm">
-              Web Developer & BSIT Graduate
+              Full Stack Web Developer
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Follow Me</h4>
             <div className="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/XenpaiRence"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
@@ -62,16 +62,16 @@ export default function Footer() {
                 <Code size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.facebook.com/donlorico.lacanilao.7?share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EomVYWfAN#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
-                aria-label="LinkedIn"
+                aria-label="Facebook"
               >
                 <Share2 size={20} />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:rencelacanilao23@gmail.com"
                 className="p-2 rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-600 hover:bg-gray-900 transition-all duration-300"
                 aria-label="Email"
               >

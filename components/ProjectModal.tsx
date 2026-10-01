@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { X, Code, ExternalLink } from "lucide-react";
 import { Project } from "@/data/projects";
 
@@ -59,11 +60,23 @@ export default function ProjectModal({
               {/* Modal Content */}
               <div className="p-6 space-y-6">
                 {/* Project Image */}
-                <div className="h-64 sm:h-80 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-lg flex items-center justify-center overflow-hidden">
-                  <div className="text-center text-gray-500">
-                    <div className="text-6xl mb-2">🖼️</div>
-                    <p>Project Screenshot</p>
-                  </div>
+                <div className="relative h-64 sm:h-80 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-lg overflow-hidden">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} project screenshot`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 896px"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div className="h-full flex items-center justify-center text-center text-gray-500">
+                      <div>
+                        <div className="text-6xl mb-2">🖼️</div>
+                        <p>Project Screenshot</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Title */}
@@ -71,44 +84,193 @@ export default function ProjectModal({
                   <h3 className="text-3xl font-bold text-white mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 text-lg">
+                  {project.subtitle && (
+                    <p className="text-sky-300 text-lg">{project.subtitle}</p>
+                  )}
+                </div>
+
+                {/* Overview */}
+                <section>
+                  <h4 className="text-lg font-semibold text-white mb-2">
+                    Overview
+                  </h4>
+                  <p className="text-gray-300 leading-relaxed">
                     {project.longDescription}
                   </p>
-                </div>
+                </section>
+
+                {project.purpose && (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                    <h4 className="text-lg font-semibold text-white mb-2">
+                      Purpose
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.purpose}
+                    </p>
+                  </section>
+                )}
 
                 {/* Problem & Solution */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                {project.functions ? (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
                     <h4 className="text-lg font-semibold text-white mb-2">
-                      Problem
+                      Problems Solved
                     </h4>
-                    <p className="text-gray-300">{project.problem}</p>
-                  </div>
+                    <h5 className="text-sm font-semibold text-gray-200 mb-1">
+                      Original Problem
+                    </h5>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.problem}
+                    </p>
+                    <h5 className="text-sm font-semibold text-gray-200 mt-4 mb-1">
+                      How the System Addresses It
+                    </h5>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.solution}
+                    </p>
+                  </section>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                      <h4 className="text-lg font-semibold text-white mb-2">
+                        Problem
+                      </h4>
+                      <p className="text-gray-300">{project.problem}</p>
+                    </div>
 
-                  <div className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                    <div className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                      <h4 className="text-lg font-semibold text-white mb-2">
+                        Solution
+                      </h4>
+                      <p className="text-gray-300">{project.solution}</p>
+                    </div>
+                  </div>
+                )}
+
+                {project.functions ? (
+                  <section>
+                    <h4 className="text-lg font-semibold text-white mb-4">
+                      Main Functions
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {project.functions.map((item) => (
+                        <article
+                          key={item.title}
+                          className="p-4 rounded-lg bg-gray-800 border border-gray-700"
+                        >
+                          <h5 className="font-semibold text-white mb-2">
+                            {item.title}
+                          </h5>
+                          <ul className="space-y-2">
+                            {item.details.map((detail) => (
+                              <li
+                                key={detail}
+                                className="flex items-start gap-3 text-sm text-gray-300"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 flex-shrink-0" />
+                                <span>{detail}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                ) : (
+                  <section>
+                    <h4 className="text-lg font-semibold text-white mb-4">
+                      Key Features
+                    </h4>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {project.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 mt-2 flex-shrink-0" />
+                          <span className="text-gray-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {project.users && (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      Users
+                    </h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {project.users.map((user) => (
+                        <li key={user} className="flex items-start gap-3 text-gray-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 flex-shrink-0" />
+                          <span>{user}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {project.documentCategories && (
+                  <section>
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      Document Categories
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {project.documentCategories.map((category) => (
+                        <div
+                          key={category}
+                          className="p-3 rounded-lg bg-gray-800 border border-gray-700 text-gray-300"
+                        >
+                          {category}
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {project.impact && (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      {project.benefits ? "Benefits" : "Impact"}
+                    </h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {project.impact.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-gray-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {project.benefits && (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      Benefits
+                    </h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {project.benefits.map((benefit) => (
+                        <li key={benefit} className="flex items-start gap-3 text-gray-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {project.scope && (
+                  <section className="p-4 rounded-lg bg-gray-800 border border-gray-700">
                     <h4 className="text-lg font-semibold text-white mb-2">
-                      Solution
+                      Scope
                     </h4>
-                    <p className="text-gray-300">{project.solution}</p>
-                  </div>
-                </div>
-
-                {/* Features */}
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">
-                    Key Features
-                  </h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 mt-2 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.scope}
+                    </p>
+                  </section>
+                )}
 
                 {/* Challenges & Learnings */}
+                {!project.functions && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-4">
@@ -142,22 +304,29 @@ export default function ProjectModal({
                     </ul>
                   </div>
                 </div>
+                )}
 
                 {/* Technologies */}
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-4">
                     Technologies Used
                   </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 text-blue-300 text-sm font-medium border border-blue-600/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {project.technologies.length > 0 ? (
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 text-blue-300 text-sm font-medium border border-blue-600/30"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-gray-400 text-sm">
+                      Technology stack not specified in the project information.
+                    </p>
+                  )}
                 </div>
 
                 {/* Links */}
